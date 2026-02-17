@@ -8,6 +8,15 @@ export enum WasteCategory {
   NON_RECYCLABLE = 'Non-Recyclable'
 }
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  role: 'user' | 'admin';
+  avatar: string;
+}
+
 export interface ClassificationResult {
   id: string;
   category: WasteCategory;
