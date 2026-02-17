@@ -1,0 +1,7 @@
+{
+  "name": "EcoSort AI - Smart Recycling System",
+  "description": "A sophisticated university-level waste classification platform powered by Gemini AI, featuring real-time analytics, classification history, and administrative insights.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
