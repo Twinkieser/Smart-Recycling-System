@@ -11,6 +11,10 @@ import History from './pages/History';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
+import Map from './pages/Map';
+import Leaderboard from './pages/Leaderboard';
+import Rewards from './pages/Rewards';
 
 const App: React.FC = () => {
   return (
@@ -20,41 +24,18 @@ const App: React.FC = () => {
           <Navbar />
           <main className="flex-grow">
             <Routes>
-              {/* Public Routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
 
-              {/* Protected Routes */}
-              <Route path="/" element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              } />
-              <Route path="/result/:id" element={
-                <ProtectedRoute>
-                  <Result />
-                </ProtectedRoute>
-              } />
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/history" element={
-                <ProtectedRoute>
-                  <History />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin" element={
-                <ProtectedRoute>
-                  <Admin />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
+              <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="/map" element={<ProtectedRoute><Map /></ProtectedRoute>} />
+              <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+              <Route path="/rewards" element={<ProtectedRoute><Rewards /></ProtectedRoute>} />
+              <Route path="/result/:id" element={<ProtectedRoute><Result /></ProtectedRoute>} />
+              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
+              <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><Admin /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             </Routes>
           </main>
           <footer className="bg-white border-t border-gray-200 py-8 mt-12">
@@ -64,11 +45,6 @@ const App: React.FC = () => {
                   <span className="font-bold text-lg text-gray-900">EcoSort<span className="text-blue-600">AI</span></span>
                   <span className="text-gray-300">|</span>
                   <span className="text-sm text-gray-500">University Diploma Project 2024</span>
-                </div>
-                <div className="flex space-x-6 text-sm text-gray-400">
-                  <a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a>
-                  <a href="#" className="hover:text-blue-600 transition-colors">Terms of Service</a>
-                  <a href="#" className="hover:text-blue-600 transition-colors">Faculty of Computer Science</a>
                 </div>
               </div>
               <p className="mt-8 text-center text-xs text-gray-400">

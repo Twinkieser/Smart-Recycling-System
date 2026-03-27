@@ -8,13 +8,43 @@ export enum WasteCategory {
   NON_RECYCLABLE = 'Non-Recyclable'
 }
 
+export interface Reward {
+  id: string;
+  title: string;
+  pointsRequired: number;
+  description: string;
+  category: string;
+}
+
+export interface WasteContainer {
+  id: string;
+  name: string;
+  type: WasteCategory;
+  lat: number;
+  lng: number;
+  address: string;
+  fillLevel: number;
+  status: 'available' | 'full' | 'maintenance';
+}
+
 export interface User {
   id: string;
   name: string;
+  nativeName?: string;
   email: string;
   password?: string;
   role: 'user' | 'admin';
   avatar: string;
+  studentId: string;
+  iin: string;
+  birthdate: string;
+  financing: string;
+  course: number;
+  status: string;
+  studyingStatus: string;
+  phone: string;
+  points: number;
+  level: number;
 }
 
 export interface ClassificationResult {
@@ -26,18 +56,4 @@ export interface ClassificationResult {
   binColor: string;
   timestamp: string;
   imageUrl: string;
-}
-
-export interface UserStats {
-  totalUploads: number;
-  mostFrequent: WasteCategory;
-  weeklyActivity: { day: string; count: number }[];
-  avgConfidence: number;
-}
-
-export interface AdminStats {
-  totalUsers: number;
-  totalClassifications: number;
-  distribution: { name: string; value: number }[];
-  trends: { date: string; count: number }[];
 }

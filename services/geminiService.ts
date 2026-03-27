@@ -4,6 +4,21 @@ import { WasteCategory, ClassificationResult } from "../types";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
+export async function getDailyEcoTip(): Promise<string> {
+  const model = "gemini-3-flash-preview";
+  const prompt = "Provide a single, concise, surprising recycling or sustainability tip for a university student. Keep it under 150 characters.";
+  
+  try {
+    const response = await ai.models.generateContent({
+      model,
+      contents: [{ parts: [{ text: prompt }] }],
+    });
+    return response.text || "Recycling one aluminum can saves enough energy to run a TV for three hours!";
+  } catch (err) {
+    return "Small actions lead to big changes. Keep recycling!";
+  }
+}
+
 export async function classifyWaste(imageB64: string): Promise<Partial<ClassificationResult>> {
   const model = "gemini-3-flash-preview";
   
